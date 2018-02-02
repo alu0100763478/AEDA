@@ -1,5 +1,3 @@
-#pragma once
-
 #include "nodo.hpp"
 #include <iostream>
 #include <cstdio>
@@ -15,7 +13,9 @@ class Lista{
     public:
     
     void insert_nodo(Nodo* nuevo);
+    void delete_nodo();
     void mostrarLista();
+
 };
 
 

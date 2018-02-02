@@ -1,17 +1,23 @@
-#pragma once
 #include <iostream>
 #include <cstdio>
 
 using namespace std;
+
+typedef int TDATO;
+
 class Nodo{
     private:
-    typedef int TDATO;
+    TDATO valor;
     Nodo* siguiente;
     Nodo* anterior;
     
     public:
     
     Nodo(TDATO dato);
-    void mostrarNodo();
+    TDATO mostrarNodo();
+    void setSiguiente(Nodo* next);
+    Nodo* getSiguiente();
+    void setAnterior(Nodo* prev);
+    Nodo* getAnterior();    
 
 };

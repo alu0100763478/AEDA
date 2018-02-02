@@ -1,9 +1,28 @@
+#include <iostream>
+#include "nodo.hpp"
+
 Nodo::Nodo(TDATO dato):
-TDATO(dato),
+valor(dato),
 siguiente(NULL),
 anterior(NULL)
 {}
 
-void Nodo::mostrarNodo(){
-    std::cout << "Nodo: " << TDATO << ".Siguiente: "<< siguiente << ".Anterior:  " << anterior << std::endl;
+TDATO Nodo::mostrarNodo(){
+    return valor;
+}
+
+Nodo* Nodo::getSiguiente(){
+    return siguiente;    
+}
+
+void Nodo::setSiguiente(Nodo* next){
+    siguiente = next;
+}
+
+Nodo* Nodo::getAnterior(){
+    return anterior;    
+}
+void Nodo::setAnterior(Nodo* prev){
+    anterior = prev;
+    
 }
