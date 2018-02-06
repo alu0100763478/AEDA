@@ -1,37 +1,54 @@
 #include "listaEnlazada.hpp"
 
+Lista::Lista(void):
+top(NULL){}
 
+bool Lista::empty(void){
+    return (top==NULL);
+}
 
 void Lista::insert_nodo(Nodo* nuevo){
-    
-    
-    if(top == NULL){
-        top -> setSiguiente(nuevo);
-        top = nuevo;
-    }
-    else{
-        top -> setSiguiente(nuevo);
-        nuevo -> setAnterior(top);
-        top = nuevo;
-    }
+    nuevo -> setSiguiente(top);
+    top = nuevo;
     
 }
 
-void Lista::delete_nodo(){
+Nodo* Lista::delete_nodo(void){
 
-        if(top == 0){
-            std::cerr << "ERROR: could not allocate storage\n";
-            std::terminate();
-        } 
-        else{
-        Nodo* aux = top;
-        top = aux -> getAnterior() ;
-        top -> setSiguiente(NULL);
-        }
-}
-
-void Lista::mostrarLista(){
+    Nodo* aux = top;
+    top = top -> getSiguiente() ;
+    aux -> setSiguiente(NULL);
     
-    std::cout << "Top: " << top -> mostrarNodo() << ".Anterior: " << top -> getAnterior() -> mostrarNodo() << ". Siguiente: " << top -> getSiguiente() << std::endl;
+    return aux;
 }
 
+Nodo* Lista::getTop(){
+    
+    return top;
+}
+
+void Lista::insert_after(Nodo* prev, Nodo* nuevo)
+{
+		nuevo->setSiguiente(prev->getSiguiente());
+		prev->setSiguiente(nuevo);
+}
+
+Nodo* Lista::extract_after(Nodo* prev) {
+
+		Nodo* aux = prev->getSiguiente();
+		prev->setSiguiente(aux->getSiguiente());
+		aux->setSiguiente(NULL);
+
+		return aux;
+	}
+
+ostream& Lista::write(ostream& os){
+	
+		Nodo* aux = top;
+
+		while (aux != NULL) {
+		    aux->write(os);
+		    std::cout << " ";
+		    aux = aux->getSiguiente();
+		}
+	}

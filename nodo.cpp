@@ -3,13 +3,9 @@
 
 Nodo::Nodo(TDATO dato):
 valor(dato),
-siguiente(NULL),
-anterior(NULL)
+siguiente(NULL)
 {}
 
-TDATO Nodo::mostrarNodo(){
-    return valor;
-}
 
 Nodo* Nodo::getSiguiente(){
     return siguiente;    
@@ -19,10 +15,16 @@ void Nodo::setSiguiente(Nodo* next){
     siguiente = next;
 }
 
-Nodo* Nodo::getAnterior(){
-    return anterior;    
+TDATO Nodo::getValor(){
+    return valor;    
 }
-void Nodo::setAnterior(Nodo* prev){
-    anterior = prev;
-    
+
+void Nodo::setValor(TDATO dato){
+    valor = dato;
 }
+
+ostream& Nodo::write(ostream& os){
+    os << valor;
+	return os;
+}
+
